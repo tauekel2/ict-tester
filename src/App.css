@@ -137,6 +137,12 @@ flex-direction: column;
 .navigation__number:nth-child(9) {
   padding: 10px 15px;
 }
+.lox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 @media only screen and (max-width: 600px) {
   body {
     background-color: lightblue;

@@ -78,11 +78,11 @@ temp[currentQuestion]='nothing'
   return (
     <div className="quiz">
       {isLoad ?
-        <div>
+        <div className='lox'>
           Loading...
         </div>
         : isResult ?
-          <div>
+          <div className='lox'>
             <h1>Your result: {result}/50</h1>
           </div>
           :
