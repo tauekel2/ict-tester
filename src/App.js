@@ -29,7 +29,7 @@ function App() {
         index: questions[i].index,
         answer: answers[i]
       }
-      axios.post('http://localhost:8080/check', { arr: arr })
+      axios.post('https://tester-back.vercel.app/check', { arr: arr })
         .then((result) => {
           setResult(result.data);
           setIsLoad(false);
@@ -98,7 +98,9 @@ function App() {
             }}>Previous</div>
             <div onClick={end} >End Quiz</div>
             <div>
-
+              {nums.map((e)=>{
+                return (<div onClick={()=>{setQurrentQuestion(e)}} key={e}>{e+1}</div>)
+              })}
             </div>
           </div>
       }
