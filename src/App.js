@@ -11,9 +11,17 @@ function App() {
   const [currentQuestion, setQurrentQuestion] = useState(0);
   const [isQuizEnded, setIsQuizEnded] = useState(localStorage.getItem('isQuizEnded') !== 'true');
   const [result, setResult] = useState(0);
+  
   const selectAnswer = (e) => {
     const temp = [...answers];
-    temp[currentQuestion] = e;
+    if (  temp[currentQuestion] ===e){
+  
+temp[currentQuestion]='nothing'
+  
+    }
+    else{
+      temp[currentQuestion]=e
+    }
     setAnswers(temp);
     localStorage.setItem('answers', JSON.stringify(temp));
   }
@@ -67,7 +75,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="quiz">
       {isLoad ?
         <div>
           Loading...
@@ -77,32 +85,45 @@ function App() {
             <h1>Your result: {result}/50</h1>
           </div>
           :
+
           <div>
-            <div>Question: {currentQuestion + 1}/50</div>
-            <h1>{questions[currentQuestion].question}</h1>
+             <div className='navigation'>
+              {nums.map((e)=>{
+                return (<div onClick={()=>{setQurrentQuestion(e)}} key={e} className='navigation__number'>{e+1}</div>)
+              })}
+            </div>
+            <div >Question: {currentQuestion + 1}/50</div>
+            <h1 className='question'>{questions[currentQuestion].question}</h1>
+       <div className='answer'>
             {questions[currentQuestion].options.map((e) => {
-              return (<div className={answers[currentQuestion] == e ? 'option' : ''} key={e} onClick={() => { selectAnswer(e) }}>
-                <div>{String.fromCharCode('A'.charCodeAt() + questions[currentQuestion].options.indexOf(e))}</div>
-                {e}
-              </div>);
+              return (<div key={e} >
+       
+      <div className='answers'>
+                <div className={answers[currentQuestion] == e ? 'answer-letter1 ' : 'answer-letter'}  onClick={() => { selectAnswer(e) }}>{String.fromCharCode('A'.charCodeAt() + questions[currentQuestion].options.indexOf(e))}</div>
+                <div className='answer-text'>{e} </div>
+                
+         </div>
+      </div>
+                );
+         
             })}
-            <div onClick={() => {
+</div>
+<div className='button'>
+            <div className='btn'onClick={() => {
               if (currentQuestion != 49) {
                 setQurrentQuestion(currentQuestion + 1)
               }
             }}>Next</div>
-            <div onClick={() => {
+            <div className='btn'onClick={() => {
               if (currentQuestion != 0) {
                 setQurrentQuestion(currentQuestion - 1)
               }
             }}>Previous</div>
-            <div onClick={end} >End Quiz</div>
-            <div>
-              {nums.map((e)=>{
-                return (<div onClick={()=>{setQurrentQuestion(e)}} key={e}>{e+1}</div>)
-              })}
+            <div onClick={end} className='btn-end'>End Quiz</div>
             </div>
+         
           </div>
+
       }
     </div>
   );
