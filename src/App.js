@@ -27,21 +27,22 @@ function App() {
     for (let i = 0; i < 50; i++) {
       arr[i] = {
         index: questions[i].index,
-        answer: answers[i]
+        answer: answers[i] ?? "nothing"
       }
-      axios.post('https://tester-back.vercel.app/check', { arr: arr })
-        .then((result) => {
-          setResult(result.data);
-          setIsLoad(false);
-          setIsResult(true);
-          localStorage.setItem('isQuizEnded', 'false');
-          localStorage.setItem('questions', []);
-          localStorage.setItem('answers', []);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     }
+    console.log(JSON.stringify(arr));
+    axios.post('https://tester-back.vercel.app/check', { arr: arr })
+      .then((result) => {
+        setResult(result.data);
+        setIsLoad(false);
+        setIsResult(true);
+        localStorage.setItem('isQuizEnded', 'false');
+        localStorage.setItem('questions', []);
+        localStorage.setItem('answers', []);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   useEffect(() => {
@@ -98,8 +99,8 @@ function App() {
             }}>Previous</div>
             <div onClick={end} >End Quiz</div>
             <div>
-              {nums.map((e)=>{
-                return (<div onClick={()=>{setQurrentQuestion(e)}} key={e}>{e+1}</div>)
+              {nums.map((e) => {
+                return (<div onClick={() => { setQurrentQuestion(e) }} key={e}>{e + 1}</div>)
               })}
             </div>
           </div>
