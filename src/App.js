@@ -115,7 +115,7 @@ temp[currentQuestion]='nothing'
                 setQurrentQuestion(currentQuestion + 1)
               }
             }}>Next</div>
-            <div className='btn'onClick={() => {
+            <div className='btn2'onClick={() => {
               if (currentQuestion != 0) {
                 setQurrentQuestion(currentQuestion - 1)
               }

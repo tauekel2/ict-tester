@@ -77,6 +77,18 @@ flex-direction: column;
   cursor: pointer;
   text-align: center;
 }
+.btn2{
+  margin: 0 auto;
+  color: #fff;
+  background: #0b0e21;
+  width:100px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 14px 75px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+}
 .btn-end {
   margin: 0 auto;
   color: #fff;
@@ -130,18 +142,25 @@ flex-direction: column;
     background-color: lightblue;
   }
 .answer{
-  width: 90%;
+  width: 50%;
 }
 .question{
-  width: 90%;
+  width: 50%;
 }
 .navigation{
-  max-width: 90%;
+  max-width: 50%;
 }
-.quiz{
+.button{
+  display: block;
+  margin-right:450px;
 
 }
-
+.btn{
+margin-bottom:20px ;
+}
+.btn-end{
+  margin-top: 20px;
+}
 }
 
 
